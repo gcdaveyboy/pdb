@@ -166,6 +166,7 @@ fn parse_optional_index(buf: &mut ParseBuffer<'_>) -> Result<Option<SymbolIndex>
 /// Information parsed from a [`Symbol`] record.
 ///
 /// [`Symbol`]: struct.Symbol.html
+#[non_exhaustive]
 #[derive(Clone, Debug, Eq, PartialEq)]
 pub enum SymbolData<'t> {
     /// End of a scope, such as a procedure.
@@ -672,6 +673,7 @@ const CV_PFLAG_NOINLINE: u8 = 0x40;
 const CV_PFLAG_OPTDBGINFO: u8 = 0x80;
 
 /// Flags of a [`ProcedureSymbol`](struct.ProcedureSymbol).
+#[non_exhaustive]
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub struct ProcedureFlags {
     /// Frame pointer is present (not omitted).
@@ -897,6 +899,7 @@ impl<'t> TryFromCtx<'t, bool> for CompilerVersion {
 }
 
 /// Compile flags declared in `CompileFlagsSymbol`.
+#[non_exhaustive]
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub struct CompileFlags {
     /// Compiled for edit and continue.
@@ -1029,6 +1032,7 @@ const CV_LVARFLAG_ISENREG_GLOB: u16 = 0x100;
 const CV_LVARFLAG_ISENREG_STAT: u16 = 0x200;
 
 /// Flags for a [`LocalSymbol`](struct.LocalSymbol.html).
+#[non_exhaustive]
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub struct LocalVariableFlags {
     /// Variable is a parameter.
@@ -1108,6 +1112,7 @@ impl<'t> TryFromCtx<'t, SymbolKind> for LocalSymbol<'t> {
 
 // https://github.com/Microsoft/microsoft-pdb/blob/082c5290e5aff028ae84e43affa8be717aa7af73/include/cvinfo.h#L4456
 /// Flags of an [`ExportSymbol`](struct.ExportSymbol.html).
+#[non_exhaustive]
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub struct ExportSymbolFlags {
     /// An exported constant.
@@ -1278,6 +1283,7 @@ pub struct ThunkAdjustor<'t> {
 }
 
 /// A thunk kind
+#[non_exhaustive]
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum ThunkKind<'t> {
     /// Standard thunk
@@ -1360,6 +1366,7 @@ const CV_SEPCODEFLAG_IS_LEXICAL_SCOPE: u32 = 0x01;
 const CV_SEPCODEFLAG_RETURNS_TO_PARENT: u32 = 0x02;
 
 /// Flags for a [`SeparatedCodeSymbol`](struct.SeparatedCodeSymbol.html).
+#[non_exhaustive]
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub struct SeparatedCodeFlags {
     /// S_SEPCODE doubles as lexical scope.
